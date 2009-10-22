@@ -10,6 +10,8 @@ To use the Superfeedr java library, just add the file ./distrib/superfeedr.jar t
 
 See the class org.superfeedr.test.Test to know how to use it.
 
+For the jid: use your Superfeedr login (john-doe, not john-doe@superfeedr.com)
+
 Have fun
 
 Thomas RICARD, July 2009
