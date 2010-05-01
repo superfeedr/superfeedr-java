@@ -20,7 +20,7 @@ See the class `org.superfeedr.test.Test` to know how to use it.
 
 You don't need that if you don't need to change the code. Please just use the built `.jar` file in `/distrib`
 
-It you changed the code, you can rebuild the .jar file, by using `ant` in the wrapper directory.
+It you changed the code, you can rebuild the .jar file, by using `ant` in the wrapper directory or use `maven clean install` if you prefer to use Maven 2
 
 ## Example
 
