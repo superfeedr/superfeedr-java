@@ -59,6 +59,8 @@ public class Superfeedr {
 
 	private static final String FIREHOSER = "firehoser.superfeedr.com";
 
+  public static final String DEFAULT_RESOURCE = "superfeedr-java";	
+	
 	// The pseudo ISO 8601 date formatter that misses the timezone (thanks to
 	// java)
 	private static DateFormat m_ISO8601Local = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
@@ -95,7 +97,7 @@ public class Superfeedr {
 
 	/**
 	 * Constructor of a superfeedr instance that will connect to the specified
-	 * server using the jid and password as credentials
+	 * server using the jid and password as credentials, using the provided resource
 	 * 
 	 * @param jid
 	 *            the jid you want to connect with
@@ -103,11 +105,13 @@ public class Superfeedr {
 	 *            the password to use
 	 * @param server
 	 *            the server you connect to
+	 * @param resource
+	 *            the resource you want to connect with
 	 */
-	public Superfeedr(final String jid, final String password, final String server) throws XMPPException {
-		if (jid == null || password == null || server == null)
+	public Superfeedr(final String jid, final String password, final String server, final String resource) throws XMPPException {
+		if (jid == null || password == null || server == null || resource == null)
 			throw new IllegalArgumentException("arguments cannot be null");
-
+	
 		this.jid = jid;
 		this.server = server;
 
@@ -117,7 +121,7 @@ public class Superfeedr {
 		// Now, time to connect and auth
 		try {
 			connection.connect();
-			connection.login(this.jid, password);
+			connection.login(this.jid, password, resource);
 
 			connection.addPacketListener(new SuperFeedrPacketListener(), new OrFilter(new PacketTypeFilter(Message.class), new PacketTypeFilter(IQ.class)));
 		} catch (XMPPException e) {
@@ -127,6 +131,21 @@ public class Superfeedr {
 			// Let's the caller deals with the exception
 			throw e;
 		}
+	}
+	
+  /**
+   * Constructor of a superfeedr instance that will connect to the specified
+   * server using the jid and password as credentials, using the default resource
+   * 
+   * @param jid
+   *            the jid you want to connect with
+   * @param password
+   *            the password to use
+   * @param server
+   *            the server you connect to
+   */
+	public Superfeedr(final String jid, final String password, final String server) throws XMPPException {
+	  this(jid, password, server, DEFAULT_RESOURCE);
 	}
 
 	/**
