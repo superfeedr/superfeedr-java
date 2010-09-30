@@ -51,7 +51,7 @@ It you changed the code, you can rebuild the .jar file, by using `ant` in the wr
             // Debugging will display a window that allows you to see incoming/outcoming traffic
             XMPPConnection.DEBUG_ENABLED = true;
             // Use your Superfeedr credentials
-            Superfeedr feedr = new Superfeedr("julien", "inc0nueE", "superfeedr.com");
+            Superfeedr feedr = new Superfeedr("user", "password", "superfeedr.com");
         
             // Adds notification Handler. The onNotification method will be called with a SuperfeedrEventExtension object.
             feedr.addOnNotificationHandler(new OnNotificationHandler() {
