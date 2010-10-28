@@ -27,7 +27,7 @@
     </extensionProvider>
     <extensionProvider>
     	<elementName>item</elementName>
-        <namespace>http://jabber.org/protocol/pubsub#event</namespace>
+        <namespace>http://jabber.org/protocol/pubsub</namespace>
         <className>org.superfeedr.provider.ItemProvider</className>
     </extensionProvider>
     <extensionProvider>

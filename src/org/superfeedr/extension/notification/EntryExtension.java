@@ -25,25 +25,24 @@ import java.util.Date;
 
 public class EntryExtension extends DefaultSuperfeerExtension {
 	private String id;
-
 	private String link;
-
 	private String linkType;
-
 	private Date published;
-
+    private Date updated;
 	private String summary;
-
 	private String title;
+    private String content;
 
-	public EntryExtension(final String id2, final String link2, final String linkType2, final Date published2, final String title2,
-			final String summary2) {
+	public EntryExtension(final String id2, final String link2, final String linkType2, final Date published2, final Date updated2,
+                          final String title2, final String summary2, final String content2) {
 		this.id = id2;
 		this.link = link2;
 		this.linkType = linkType2;
 		this.published = published2;
 		this.title = title2;
 		this.summary = summary2;
+        this.content = content2;
+        this.updated = updated2;
 	}
 
 	/**
@@ -98,4 +97,13 @@ public class EntryExtension extends DefaultSuperfeerExtension {
 	public String getTitle() {
 		return title;
 	}
+
+    /**
+     * The content of this entry
+     *
+     * @return the content
+     */
+    public String getContent() {
+        return content;
+    }
 }
