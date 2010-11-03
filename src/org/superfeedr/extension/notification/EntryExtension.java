@@ -106,4 +106,13 @@ public class EntryExtension extends DefaultSuperfeerExtension {
     public String getContent() {
         return content;
     }
+
+    /**
+     * The date this item was last updated
+     *
+     * @return the date
+     */
+    public Date getUpdated() {
+      return updated;
+    }
 }
