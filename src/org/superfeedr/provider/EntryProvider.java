@@ -21,13 +21,13 @@
  */
 package org.superfeedr.provider;
 
-import java.util.Date;
-
 import org.jivesoftware.smack.packet.PacketExtension;
 import org.jivesoftware.smack.provider.PacketExtensionProvider;
 import org.superfeedr.Superfeedr;
 import org.superfeedr.extension.notification.EntryExtension;
 import org.xmlpull.v1.XmlPullParser;
+
+import java.util.Date;
 
 public class EntryProvider implements PacketExtensionProvider{
 
@@ -39,8 +39,10 @@ public class EntryProvider implements PacketExtensionProvider{
 		String link = null;
 		String linkType = null;
 		Date published = null;
+        Date updated = null;
 		String summary = null;
 		String title = null;
+        String content = null;
 		
 		int tag = parser.next();
 		
@@ -58,14 +60,20 @@ public class EntryProvider implements PacketExtensionProvider{
 				}else if ("id".equals(parser.getName())){
 					parser.next();
 					id = parser.getText();
-				}else if ("published".equals(parser.getName())){
+				} else if ("published".equals(parser.getName())){
 					parser.next();
 					published = Superfeedr.convertDate(parser.getText());
+				} else if ("content".equals(parser.getName())) {
+                    parser.next();
+                    content = parser.getText();
+                } else if ("updated".equals(parser.getName())){
+					parser.next();
+					updated = Superfeedr.convertDate(parser.getText());
 				}
 			}
 			tag = parser.next();
 		}
-		return new EntryExtension(id, link, linkType, published, title, summary);
+		return new EntryExtension(id, link, linkType, published, updated, summary, title, content);
 	}
 
 }
